@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "finished_games",
+  "info": {
+    "name": "Finished games",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "speed": {
+      "type": "decimal",
+      "required": true
+    },
+    "users_permissions_user": {
+      "plugin": "users-permissions",
+      "model": "user"
+    }
+  }
+}

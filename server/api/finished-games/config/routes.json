@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/finished-games",
+      "handler": "finished-games.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/finished-games/count",
+      "handler": "finished-games.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/finished-games/:id",
+      "handler": "finished-games.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/finished-games",
+      "handler": "finished-games.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/finished-games/:id",
+      "handler": "finished-games.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/finished-games/:id",
+      "handler": "finished-games.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
