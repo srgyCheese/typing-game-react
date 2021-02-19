@@ -1,12 +1,17 @@
 import React from 'react'
-import {Navbar as Navb} from 'react-bootstrap'
+import { Navbar as Navb, Button, Nav } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
+import { isAuthSelector } from '../store/selectors'
 
 const Navbar = () => {
-    const {Brand} = Navb
+    const isAuth = useSelector(isAuthSelector)
 
     return (
         <Navb bg="primary" variant="dark">
-            <Brand href="/test">Typing</Brand>
+            <Navb.Brand href="/test">Typing</Navb.Brand>
+            <Navb.Collapse>
+                {isAuth && <Button variant="danger" className="ml-auto">Выйти</Button>}
+            </Navb.Collapse>
         </Navb>
     )
 }
