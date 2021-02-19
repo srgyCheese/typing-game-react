@@ -1,6 +1,6 @@
-import Login from "./pages/Login"
-import GoogleAuthCallback from './pages/GoogleAuthCallback'
-import TypeTest from './pages/TypeTest'
+import Login from "pages/Login"
+import GoogleAuthCallback from 'pages/GoogleAuthCallback'
+import TypeTest from 'pages/TypeTest'
 
 export const publicRoutes = [
     {

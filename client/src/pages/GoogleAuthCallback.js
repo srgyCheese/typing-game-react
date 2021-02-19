@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useLocation, useHistory } from 'react-router-dom'
-import Loader from './../components/Loader'
-import { setToken } from './../store/actions/auth';
+import Loader from 'components/Loader'
+import { setToken } from 'store/actions/auth'
 
 function GoogleAuthCallback() {
     const {search} = useLocation()

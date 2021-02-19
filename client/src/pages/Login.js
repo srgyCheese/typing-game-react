@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { isAuthSelector } from '../store/selectors'
+import { isAuthSelector } from 'store/selectors'
 
 const Login = () => {
     const loginViaGoogle = () => {

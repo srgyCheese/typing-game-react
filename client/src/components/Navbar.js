@@ -1,7 +1,7 @@
 import React from 'react'
-import { Navbar as Navb, Button, Nav } from 'react-bootstrap'
+import { Navbar as Navb, Button } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
-import { isAuthSelector } from '../store/selectors'
+import { isAuthSelector } from 'store/selectors'
 
 const Navbar = () => {
     const isAuth = useSelector(isAuthSelector)
