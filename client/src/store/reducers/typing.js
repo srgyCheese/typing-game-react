@@ -1,11 +1,11 @@
-import { FINISH_TYPING, NEXT_LETTER, START_TYPING, WRONG_LETTER } from 'store/types/typing'
+import { FINISH_TYPING, NEXT_LETTER, START_TYPING, UPDATE_TYPING_SPEED, WRONG_LETTER } from 'store/types/typing'
 
 const initialState = {
     text: {},
-    startTime: '',
-    endTime: '',
-    currentLetter: 0,
-    endResults: {}
+    startTime: 0,
+    speed: 0,
+    endTime: 0,
+    currentLetter: 0
 }
 
 function typingReducer(state = initialState, action) {
@@ -40,9 +40,7 @@ function typingReducer(state = initialState, action) {
                     },
                     ...state.text.slice(state.currentLetter + 1)
                 ],
-                endResults: {
-                    speed: state.currentLetter / ((new Date() - state.startTime) / 60_000)
-                }
+                endTime: new Date()
             }
         case WRONG_LETTER:
             return {
@@ -55,6 +53,11 @@ function typingReducer(state = initialState, action) {
                     },
                     ...state.text.slice(state.currentLetter + 1)
                 ]
+            }
+        case UPDATE_TYPING_SPEED:
+            return {
+                ...state,
+                speed: state.currentLetter / ((new Date() - state.startTime) / 60_000)
             }
         default: return state
     }

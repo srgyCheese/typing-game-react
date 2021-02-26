@@ -1,4 +1,4 @@
-import { NEXT_LETTER, INIT_TYPING, START_TYPING, TRY_ADD_LETTER, WRONG_LETTER, FINISH_TYPING } from 'store/types/typing'
+import { NEXT_LETTER, INIT_TYPING, START_TYPING, TRY_ADD_LETTER, WRONG_LETTER, FINISH_TYPING, UPDATE_TYPING_SPEED } from 'store/types/typing'
 
 
 export const initTyping = () => ({
@@ -25,4 +25,8 @@ export const nextLetter = () => ({
 
 export const wrongLetter = () => ({
     type: WRONG_LETTER
+})
+
+export const updateTypingSpeed = () => ({
+    type: UPDATE_TYPING_SPEED
 })
