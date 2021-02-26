@@ -1,6 +1,7 @@
 import Login from "pages/Login"
 import GoogleAuthCallback from 'pages/GoogleAuthCallback'
-import TypeTest from 'pages/TypeTest'
+import StartTypingTest from 'pages/StartTypeTest'
+import TypingTest from 'pages/TypingTest'
 
 export const publicRoutes = [
     {
@@ -16,6 +17,10 @@ export const publicRoutes = [
 export const authRoutes = [
     {
         path: '/test',
-        component: TypeTest
+        component: StartTypingTest
+    },
+    {
+        path: '/test/start',
+        component: TypingTest
     }
 ]

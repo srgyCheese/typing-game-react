@@ -4,7 +4,7 @@ import { useLocation, useHistory } from 'react-router-dom'
 import Loader from 'components/Loader'
 import { setToken } from 'store/actions/auth'
 
-function GoogleAuthCallback() {
+const GoogleAuthCallback = () => {
     const {search} = useLocation()
     const dispatch = useDispatch()
     const history = useHistory()
@@ -26,7 +26,7 @@ function GoogleAuthCallback() {
 
     return (
         <div style={{width: '70px'}} className="mx-auto mt-5">
-            <Loader size_="70px" />
+            <Loader size="70px" />
         </div>
     )
 }

@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"npm run develop --prefix server\" \"npm run start --prefix client\"",
-    "clientdev": "npm run start --prefix client"
+    "dev": "concurrently \"npm run client:dev\" \"npm run server:dev\"",
+    "client:dev": "npm run start --prefix client",
+    "server:dev": "npm run develop --prefix server"
   },
   "keywords": [],
   "author": "srgyCheese",

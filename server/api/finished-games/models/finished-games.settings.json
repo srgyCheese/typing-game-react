@@ -8,14 +8,14 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "speed": {
       "type": "decimal",
       "required": true
     },
-    "users_permissions_user": {
+    "owner": {
       "plugin": "users-permissions",
       "model": "user"
     }

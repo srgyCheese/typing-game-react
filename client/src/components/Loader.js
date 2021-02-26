@@ -1,11 +1,11 @@
 import React from 'react'
 import {Spinner} from 'react-bootstrap'
 
-function Loader(props) {
-    const {size_} = props
+const Loader = props => {
+    const {size} = props
 
     return (
-        <Spinner animation="border" variant="primary" {...props} style={{height: size_, width: size_}}/>
+        <Spinner animation="border" variant="primary" {...props} style={{height: size, width: size}}/>
     )
 }
 

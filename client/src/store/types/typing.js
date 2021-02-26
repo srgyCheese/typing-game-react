@@ -1,0 +1,6 @@
+export const TRY_ADD_LETTER = 'TRY_ADD_LETTER'
+export const NEXT_LETTER = 'NEXT_LETTER'
+export const WRONG_LETTER = 'WRONG_LETTER'
+export const INIT_TYPING = 'INIT_TYPING'
+export const START_TYPING = 'START_TYPING'
+export const FINISH_TYPING = 'FINISH_TYPING'

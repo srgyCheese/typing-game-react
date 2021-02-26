@@ -2,7 +2,7 @@ import { LOGOUT, SET_TOKEN } from '../types/auth'
 
 
 const initialState = {
-    jwt: ''
+    jwt: 'mock'
 }
 
 function authReducer(state = initialState, action) {
@@ -11,7 +11,7 @@ function authReducer(state = initialState, action) {
             return {...state, jwt: action.payload}
         case LOGOUT:
             return {...state, jwt: ''}
-        default: return state;
+        default: return state
     }
 }
 

@@ -1,8 +1,10 @@
-import { combineReducers } from 'redux';
-import authReducer from './auth';
+import { combineReducers } from 'redux'
+import authReducer from './auth'
+import typingReducer from './typing'
 
 const rootReducer = combineReducers({
-    auth: authReducer
+    auth: authReducer,
+    typing: typingReducer
 })
 
 export default rootReducer
