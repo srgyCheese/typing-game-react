@@ -1,8 +1,8 @@
-export const authSelector = state => state.auth
-export const isAuthSelector = state => !!state.auth.jwt
+export const selectAuth = state => state.auth
+export const selectIsAuth = state => !!state.auth.jwt
 
-export const typingSelector = state => state.typing
-export const typingResultsSelector = state => state.typing.endResults
-export const isTypingStartedSelector = state => !!state.typing.startTime
-export const isTypingEndedSelector = state => !!state.typing.endTime
-export const currentLetterSelector = state => state.typing.text[state.typing.currentLetter]
+export const selectTyping = state => state.typing
+export const selectTypingResults = state => state.typing.endResults
+export const selectIsTypingStarted = state => !!state.typing.startTime
+export const selectIsTypingEnded = state => !!state.typing.endTime
+export const selectCurrentLetter = state => state.typing.text[state.typing.currentLetter]

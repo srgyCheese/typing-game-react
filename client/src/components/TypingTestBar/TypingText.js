@@ -1,10 +1,10 @@
 import React from 'react'
-import { typingSelector } from 'store/selectors'
 import Character from './Character'
 import { useSelector } from 'react-redux'
+import { selectTyping } from 'store/selectors'
 
 const TypingText = () => {
-    const {text} = useSelector(typingSelector)
+    const {text} = useSelector(selectTyping)
 
     return (
         <>

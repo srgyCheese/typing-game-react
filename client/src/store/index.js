@@ -7,8 +7,6 @@ const sagaMiddleware = createSagaMiddleware()
 
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
 
-window.store = store
-
 sagaMiddleware.run(rootSaga)
 
 export default store

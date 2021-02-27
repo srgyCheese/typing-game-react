@@ -2,14 +2,14 @@ import React, {useEffect} from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { isAuthSelector } from 'store/selectors'
+import { selectIsAuth } from 'store/selectors'
 
 const Login = () => {
     const loginViaGoogle = () => {
         window.location = process.env.REACT_APP_API_URL + 'connect/google'
     }
 
-    const isAuth = useSelector(isAuthSelector)
+    const isAuth = useSelector(selectIsAuth)
     const history = useHistory()
 
     useEffect(() =>{

@@ -1,11 +1,21 @@
-import { FINISH_TYPING, NEXT_LETTER, START_TYPING, UPDATE_TYPING_SPEED, WRONG_LETTER } from 'store/types/typing'
+import { FINISH_TYPING, NEXT_LETTER, START_TYPING, UPDATE_TYPING_SPEED, WRONG_LETTER, BREAK_TYPING } from 'store/types/typing'
 
 const initialState = {
     text: {},
-    startTime: 0,
     speed: 0,
-    endTime: 0,
-    currentLetter: 0
+    accuracy: 100,
+    failedLettersCount: 0,
+    currentLetter: 0,
+    startTime: 0,
+    endTime: 0
+}
+
+const calculateAccuracy = (state, isFail = false) => {
+    const fails = isFail ? state.failedLettersCount + 1 : state.failedLettersCount
+
+    console.log(fails, state.currentLetter)
+
+    return (100 - (fails / (state.currentLetter + 1)) * 100).toFixed(1)
 }
 
 function typingReducer(state = initialState, action) {
@@ -27,7 +37,8 @@ function typingReducer(state = initialState, action) {
                     },
                     ...state.text.slice(state.currentLetter + 2)
                 ],
-                currentLetter: state.currentLetter + 1
+                currentLetter: state.currentLetter + 1,
+                accuracy: calculateAccuracy(state)
             }
         case FINISH_TYPING:
             return {
@@ -40,7 +51,8 @@ function typingReducer(state = initialState, action) {
                     },
                     ...state.text.slice(state.currentLetter + 1)
                 ],
-                endTime: new Date()
+                endTime: action.payload.date,
+                accuracy: calculateAccuracy(state)
             }
         case WRONG_LETTER:
             return {
@@ -52,12 +64,19 @@ function typingReducer(state = initialState, action) {
                         type: 'mistake'
                     },
                     ...state.text.slice(state.currentLetter + 1)
-                ]
+                ],
+                failedLettersCount: state.failedLettersCount + 1,
+                accuracy: calculateAccuracy(state, true)
             }
         case UPDATE_TYPING_SPEED:
             return {
                 ...state,
-                speed: state.currentLetter / ((new Date() - state.startTime) / 60_000)
+                speed: (state.currentLetter / ((action.payload.date - state.startTime) / 60_000)).toFixed(1)
+            }
+        case BREAK_TYPING:
+            return {
+                ...initialState,
+                endTime: 1
             }
         default: return state
     }

@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { initTyping } from 'store/actions/typing'
-import { typingSelector } from 'store/selectors'
-import { isTypingEndedSelector } from 'store/selectors'
+import { selectIsTypingEnded, selectTyping } from 'store/selectors'
 
 const TypingIndications = () => {
-    const {speed} = useSelector(typingSelector)
-    const isEnded = useSelector(isTypingEndedSelector)
+    const {speed, accuracy} = useSelector(selectTyping)
+    const isEnded = useSelector(selectIsTypingEnded)
     const dispatch = useDispatch()
 
     const startNewGame = () => {
@@ -16,7 +15,8 @@ const TypingIndications = () => {
 
     return (
         <div>
-            Скорость: <span>{speed.toFixed(1)} зн/мин</span>
+            <div>Скорость: {speed} зн/мин</div>
+            <div>Точность: {accuracy}%</div>
             {
                 isEnded 
                 &&

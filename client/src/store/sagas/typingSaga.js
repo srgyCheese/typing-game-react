@@ -1,15 +1,14 @@
-import { eventChannel, END } from "redux-saga"
 import { all, put, takeLatest, select, take, delay, fork } from "redux-saga/effects"
 import { INIT_TYPING, TRY_ADD_LETTER } from 'store/types/typing'
 import { finishTyping, nextLetter, startTyping, updateTypingSpeed, wrongLetter } from 'store/actions/typing'
 import Api from 'services/Api'
-import { currentLetterSelector, typingSelector, isTypingEndedSelector } from "store/selectors"
+import { selectCurrentLetter, selectIsTypingEnded, selectTyping } from "store/selectors"
 
 function* setSpeedOfTyping() {
     let isEnded = false
 
     do {
-        isEnded = yield select(isTypingEndedSelector)
+        isEnded = yield select(selectIsTypingEnded)
 
         yield put(updateTypingSpeed())
 
@@ -41,11 +40,13 @@ function* tryAddLetter(action) {
         return
     }
 
-    const currentLetter = yield select(currentLetterSelector)
-    const typing = yield select(typingSelector)
+    const currentLetter = yield select(selectCurrentLetter)
+    const typing = yield select(selectTyping)
 
     if (currentLetter.value !== action.payload) {
-        yield put(wrongLetter())
+        if (currentLetter.type !== 'mistake') {
+            yield put(wrongLetter())
+        }
         return
     }
 

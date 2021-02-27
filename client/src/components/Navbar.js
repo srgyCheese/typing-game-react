@@ -1,10 +1,10 @@
 import React from 'react'
 import { Navbar as Navb, Button } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
-import { isAuthSelector } from 'store/selectors'
+import { selectIsAuth } from 'store/selectors'
 
 const Navbar = () => {
-    const isAuth = useSelector(isAuthSelector)
+    const isAuth = useSelector(selectIsAuth)
 
     return (
         <Navb bg="primary" variant="dark">

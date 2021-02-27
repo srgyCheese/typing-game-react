@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { initTyping } from 'store/actions/typing'
+import { breakTyping, initTyping } from 'store/actions/typing'
 import TypingTestBar from 'components/TypingTestBar'
 
 const TypingTest = () => {
@@ -8,6 +8,7 @@ const TypingTest = () => {
 
     useEffect(() => {
         dispatch(initTyping())
+        return () => dispatch(breakTyping())
     }, [])
 
     return <TypingTestBar />

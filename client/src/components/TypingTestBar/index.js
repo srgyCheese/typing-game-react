@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { tryAddLetter } from 'store/actions/typing'
 import TypingText from './TypingText'
 import TypingIndications from './TypingIndications'
-import { isTypingStartedSelector } from 'store/selectors/index';
+import { selectIsTypingStarted } from 'store/selectors'
 
 const TypingTestBar = () => {
     const dispatch = useDispatch()
-    const isStarted = useSelector(isTypingStartedSelector)
+    const isStarted = useSelector(selectIsTypingStarted)
 
     const keyDownHandler = e => dispatch(tryAddLetter(e.key))
 
