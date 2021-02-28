@@ -7,7 +7,10 @@ export const initTyping = () => ({
 
 export const startTyping = text => ({
     type: START_TYPING,
-    payload: text
+    payload: {
+        text,
+        date: Date.now()
+    }
 })
 
 export const finishTyping = () => ({

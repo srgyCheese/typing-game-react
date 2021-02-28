@@ -21,7 +21,7 @@ const calculateAccuracy = (state, isFail = false) => {
 function typingReducer(state = initialState, action) {
     switch(action.type) {
         case START_TYPING:
-            return {...initialState, text: action.payload, startTime: new Date()}
+            return {...initialState, text: action.payload.text, startTime: action.payload.date}
         case NEXT_LETTER:
             return {
                 ...state,
@@ -74,10 +74,7 @@ function typingReducer(state = initialState, action) {
                 speed: (state.currentLetter / ((action.payload.date - state.startTime) / 60_000)).toFixed(1)
             }
         case BREAK_TYPING:
-            return {
-                ...initialState,
-                endTime: 1
-            }
+            return {...initialState}
         default: return state
     }
 }

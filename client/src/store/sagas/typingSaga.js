@@ -2,18 +2,18 @@ import { all, put, takeLatest, select, take, delay, fork } from "redux-saga/effe
 import { INIT_TYPING, TRY_ADD_LETTER } from 'store/types/typing'
 import { finishTyping, nextLetter, startTyping, updateTypingSpeed, wrongLetter } from 'store/actions/typing'
 import Api from 'services/Api'
-import { selectCurrentLetter, selectIsTypingEnded, selectTyping } from "store/selectors"
+import { selectCurrentLetter, selectIsTypingGoingOn, selectTyping } from "store/selectors"
 
 function* setSpeedOfTyping() {
-    let isEnded = false
+    let isGoing = true
 
     do {
-        isEnded = yield select(selectIsTypingEnded)
+        isGoing = yield select(selectIsTypingGoingOn)
 
         yield put(updateTypingSpeed())
 
         yield delay(300)
-    } while(!isEnded)
+    } while(isGoing)
 }
 
 function* gameLoop() {
