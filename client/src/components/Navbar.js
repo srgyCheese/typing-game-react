@@ -9,7 +9,10 @@ const Navbar = () => {
     const dispatch = useDispatch()
 
     const isAuth = useSelector(selectIsAuth)
-    const logoutHandler = () => dispatch(logout())
+    const logoutHandler = () => {
+        dispatch(logout())
+        localStorage.removeItem('jwt')
+    }
 
     return (
         <Navb bg="primary" variant="dark">

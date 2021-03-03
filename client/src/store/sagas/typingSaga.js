@@ -1,11 +1,11 @@
-import { all, put, takeLatest, select, take, delay, fork } from "redux-saga/effects"
+import { all, put, takeLatest, select, take, delay, call } from "redux-saga/effects"
 import { INIT_TYPING, TRY_ADD_LETTER } from 'store/types/typing'
 import { finishTyping, nextLetter, startTyping, updateTypingSpeed, wrongLetter } from 'store/actions/typing'
 import Api from 'services/Api'
 import { selectCurrentLetter, selectIsTypingGoingOn, selectTyping } from "store/selectors"
 
 function* setSpeedOfTyping() {
-    let isGoing = true
+    let isGoing
 
     do {
         isGoing = yield select(selectIsTypingGoingOn)
@@ -20,8 +20,7 @@ function* gameLoop() {
     while (true) {
         yield take(INIT_TYPING)
     
-        // const text = yield call(Api.fetchRandomText)
-        const text = 'ай ягода малинка'
+        const {text} = yield call([Api, Api.fetchRandomText])
     
         const formattedText = text.split('').map((item, index) => ({
             id: index,

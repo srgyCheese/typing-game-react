@@ -11,8 +11,8 @@ module.exports = {
         
         const texts = _texts.toArray()
 
-        const text = texts[Math.floor(Math.random() * texts.length)]
+        const {text} = texts[Math.floor(Math.random() * texts.length)].attributes
 
-        return text
+        return {text: text}
     }
-};
+}

@@ -10,12 +10,10 @@ const initialState = {
     endTime: 0
 }
 
-const calculateAccuracy = (state, isFail = false) => {
-    const fails = isFail ? state.failedLettersCount + 1 : state.failedLettersCount
+const calculateAccuracy = ({failedLettersCount, currentLetter}, isFail = false) => {
+    const fails = isFail ? failedLettersCount + 1 : failedLettersCount
 
-    console.log(fails, state.currentLetter)
-
-    return (100 - (fails / (state.currentLetter + 1)) * 100).toFixed(1)
+    return (100 - (fails / (currentLetter + 1)) * 100).toFixed(1)
 }
 
 function typingReducer(state = initialState, action) {
